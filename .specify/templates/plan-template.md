@@ -47,7 +47,11 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+*   **Principle VI: Specification and Test-Driven Development**:
+    *   [ ] **Spec-Driven**: Does a completed and approved `spec.md` for this feature exist?
+    *   [ ] **Test-Driven**: Does the plan include creating failing tests (contract, integration) before writing implementation code?
+*   **Principle I: Defined Technology Stack**:
+    *   [ ] Are all technologies in the `Technical Context` section aligned with the constitution?
 
 ## Project Structure
 

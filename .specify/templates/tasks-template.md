@@ -5,8 +5,8 @@
 
 ## Execution Flow (main)
 ```
-1. Load plan.md from feature directory
-   → If not found: ERROR "No implementation plan found"
+1. Load spec.md and plan.md from feature directory
+   → If not found: ERROR "No specification or implementation plan found"
    → Extract: tech stack, libraries, structure
 2. Load optional design documents:
    → data-model.md: Extract entities → model tasks

@@ -28,6 +28,7 @@
 ---
 
 ## ⚡ Quick Guidelines
+- ✅ This document is the official "Specification" in our **Specification-Driven Development** process.
 - ✅ Focus on WHAT users need and WHY
 - ❌ Avoid HOW to implement (no tech stack, APIs, code structure)
 - 👥 Written for business stakeholders, not developers

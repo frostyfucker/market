@@ -1,50 +1,51 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: none → 1.0.0
+- Added sections:
+  - Core Principles
+  - Additional Constraints
+  - Development Workflow
+  - Governance
+- Templates requiring updates:
+  - ⚠ pending: .specify/templates/plan-template.md
+  - ⚠ pending: .specify/templates/spec-template.md
+  - ⚠ pending: .specify/templates/tasks-template.md
+- Follow-up TODOs:
+  - TODO(SECTION_2_CONTENT): Define additional constraints if any.
+  - TODO(SECTION_3_CONTENT): Detail the development workflow.
+-->
+# market Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Defined Technology Stack
+The project adheres to a specific technology stack: React with TypeScript and TailwindCSS for the frontend, Node.js with Express for the backend, and PostgreSQL for the database. This ensures consistency and leverages team expertise.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Secure Authentication
+All user authentication must be implemented using a custom JWT-based system. This includes using `bcrypt` for password hashing and implementing a refresh token strategy for secure and persistent sessions. All protected routes must validate the access token.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. API-First Design
+The application is built around a clear API contract between the frontend and backend. All backend functionality is exposed through a well-defined set of RESTful API endpoints.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Standardized AI Integration
+All interactions with AI models must be done through the `@google/genai` SDK to ensure a consistent and maintainable approach to AI feature integration.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Structured Database Schema
+The database schema is explicitly defined. Changes to the schema should be managed through a migration process to ensure data integrity and consistency across environments.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### VI. Specification and Test-Driven Development
+Development must follow a strict process. First, a feature specification is created and approved. This specification then defines the scope of the implementation. All code written to meet the specification must be accompanied by tests, following a Test-Driven Development (TDD) approach where tests are written before the code they validate.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Additional Constraints
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+(No additional constraints defined yet.)
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow
+
+(Development workflow details to be added.)
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+All PRs/reviews must verify compliance with this constitution. Complexity must be justified. Use `docs/development_guidance.md` for runtime development guidance.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-09-19 | **Last Amended**: 2025-09-19
