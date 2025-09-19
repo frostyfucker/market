@@ -1,0 +1,1 @@
+Build an application that allows users to upload photos of clothing, uses AI to automatically identify and catalog item details (brand, size, material), and provides AI-powered tools to research market value and generate sales listings.

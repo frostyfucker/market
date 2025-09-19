@@ -1,0 +1,51 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AI Services API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/ai/market-research": {
+      "post": {
+        "summary": "Perform AI-powered market research for an item",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "itemId": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Market research data" }
+        }
+      }
+    },
+    "/api/ai/generate-listing": {
+      "post": {
+        "summary": "Generate a sales listing for an item",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "itemId": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Generated title and description" }
+        }
+      }
+    }
+  }
+}
