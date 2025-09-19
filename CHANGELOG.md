@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Implemented core application features:
+  - Backend API for authentication, inventory, and mock AI services.
+  - Frontend components for registration, login, and image upload.
+  - Basic frontend routing.
+- All backend and frontend tests are passing.
+
 ## [1.0.0] - 2025-09-19
 ### Added
 - Initial project setup.

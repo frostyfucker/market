@@ -14,9 +14,19 @@ This initial phase has established the core principles and structure for our pro
 
 ## Phase 2: Iterative Feature Development
 
-We will build the application feature by feature, following our constitution. This process will be repeated for each feature. We will start with **User Registration**.
+We will build the application feature by feature, following our constitution.
 
-1.  **Create Feature Branch:** For each feature, a new branch will be created from `dev` (e.g., `git checkout -b feature/user-registration`).
+### Completed Features
+- **Core Application Implementation (Feature 001):**
+  - Backend API for authentication, inventory, and mock AI services.
+  - Frontend components for registration, login, and image upload.
+  - Basic frontend routing.
+  - All associated tests are passing.
+
+### Next Feature
+We will start with **User Registration**.
+
+1.  **Create Feature Branch:** For each new feature, a new branch will be created from `dev` (e.g., `git checkout -b feature/user-registration`).
 2.  **Write Specification (`spec.md`):** A detailed feature specification will be created, outlining user stories, functional requirements, and acceptance criteria. This is the "Spec-Driven" part of our process.
 3.  **Create Implementation Plan (`plan.md`):** A technical plan will be generated, detailing the files to be created/modified and the overall technical approach.
 4.  **Generate Task List (`tasks.md`):** The plan will be broken down into a granular, step-by-step task list for implementation.
