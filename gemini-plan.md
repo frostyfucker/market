@@ -62,10 +62,10 @@ The frontend will be developed in parallel with the backend features.
     - Create an image capture interface using `navigator.mediaDevices.getUserMedia`.
     - Build the main inventory dashboard to display cataloged clothing items.
 
-## Phase 5: Future Steps
+## Phase 5: CI/CD and Deployment
 
-- **CI/CD Pipeline:** Set up GitHub Actions to automate testing on every pull request and streamline deployment.
-- **Deployment:** Deploy the `dev` branch to a staging environment for final review and the `main` branch to a production environment.
+- **CI/CD Pipeline:** In-progress. Setting up GitHub Actions to automate testing and deployment.
+- **Deployment:** Planned. Deploy the `dev` branch to a staging environment for final review and the `main` branch to a production environment.
 
 ---
 
