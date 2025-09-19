@@ -1,0 +1,152 @@
+Excellent. We'll put all of those pieces together. Here is a detailed, revised plan for your app, incorporating the JWT, PostgreSQL, and best practices we've discussed. This plan is designed to be a direct set of instructions for building the application.
+
+The Full App Plan
+1. Technical Stack
+Frontend: React with TypeScript and TailwindCSS (as planned).
+
+Backend: Node.js with the Express framework.
+
+Database: PostgreSQL.
+
+Authentication: Custom JWT-based system with bcrypt for password hashing and a refresh token strategy.
+
+API Layer: The @google/genai SDK for all AI interactions.
+
+2. PostgreSQL Database Setup
+First, set up your database. This schema is simple and secure.
+
+SQL
+
+-- Create a new database
+CREATE DATABASE clothing_scanner;
+
+-- Connect to the new database
+\c clothing_scanner;
+
+-- Create the 'users' table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    refresh_token VARCHAR(255)
+);
+
+-- Create the 'items' table
+CREATE TABLE items (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    image_url_garment VARCHAR(255) NOT NULL,
+    image_url_label VARCHAR(255) NOT NULL,
+    brand VARCHAR(255),
+    category VARCHAR(255),
+    size VARCHAR(255),
+    material VARCHAR(255),
+    status VARCHAR(50) DEFAULT 'To List',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Create an index to speed up lookups by user
+CREATE INDEX items_user_id_idx ON items(user_id);
+3. Backend (Node.js/Express)
+This is where the new core logic will live.
+
+Project Setup:
+
+Initialize a Node.js project: npm init -y
+
+Install dependencies: npm install express pg bcrypt jsonwebtoken multer
+
+pg: PostgreSQL client.
+
+bcrypt: Password hashing.
+
+jsonwebtoken: JWT handling.
+
+multer: Handles file uploads for images.
+
+API Routes:
+
+POST /api/auth/register:
+
+Accepts username and password.
+
+Hashes the password with bcrypt.
+
+Inserts the new user into the users table.
+
+Returns a success message.
+
+POST /api/auth/login:
+
+Accepts username and password.
+
+Finds the user in the database.
+
+Compares the provided password to the stored hash with bcrypt.compare().
+
+If a match, generates a short-lived access token and a long-lived refresh token.
+
+Stores the refresh token hash in the users table.
+
+Returns the tokens to the frontend.
+
+POST /api/auth/token:
+
+Accepts the refresh token.
+
+Verifies the token against the stored hash.
+
+Generates and returns a new access token.
+
+POST /api/inventory/upload:
+
+This will be a protected route, requiring a valid access token in the header.
+
+Uses multer to handle the image uploads.
+
+Sends the images to the Gemini API for analysis.
+
+Saves the AI results and image URLs to the items table, linked to the authenticated user's ID.
+
+GET /api/inventory:
+
+Protected route.
+
+Queries the items table for the authenticated user's items.
+
+Returns the list of items.
+
+POST /api/ai/market-research:
+
+Protected route.
+
+Calls the Gemini API with the googleSearch tool.
+
+Returns the AI's market data.
+
+POST /api/ai/generate-listing:
+
+Protected route.
+
+Calls the Gemini API to generate a title and description.
+
+Returns the generated text.
+
+4. Frontend (React/TypeScript)
+Authentication Flow:
+
+Create a simple login form and a sign-up form.
+
+When a user logs in, the app sends a request to your /api/auth/login endpoint.
+
+It stores the short-lived access token in memory (or a secure cookie) and the long-lived refresh token in a secure cookie.
+
+For every API request to a protected route, the app will add an Authorization: Bearer <access_token> header.
+
+If a request fails due to an expired token (401 error), the app will use the refresh token to get a new access token from /api/auth/token and retry the original request.
+
+State Management: Use a simple state management system (like React's Context API or Zustand) to track the user's login status and the validity of their token. This will keep your UI in sync with the backend.
+
+Image Upload: Implement the navigator.mediaDevices.getUserMedia API to capture images. The captured images will be sent as a FormData object to your backend's /api/inventory/upload endpoint.
+
