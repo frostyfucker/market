@@ -1,0 +1,40 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Inventory API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/inventory/upload": {
+      "post": {
+        "summary": "Upload clothing images for AI processing",
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "garment": { "type": "string", "format": "binary" },
+                  "label": { "type": "string", "format": "binary" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Item created and processed" }
+        }
+      }
+    },
+    "/api/inventory": {
+      "get": {
+        "summary": "Get all items for the authenticated user",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": { "description": "List of inventory items" }
+        }
+      }
+    }
+  }
+}
